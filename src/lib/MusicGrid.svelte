@@ -1,10 +1,5 @@
 <script>
-    let music_list = [
-        {
-            name: "Gojira",
-            url: "https://open.spotify.com/artist/0GDGKpJFhVpcjIGF8N6Ewt"
-        }
-    ]
+    export let music_list;
 </script>
 
 <h2>List of added music:</h2>

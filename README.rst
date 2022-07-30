@@ -24,3 +24,9 @@ v1.0
 - View added music in a grid.
 - Each item has name, artwork.
 - Click item to go to the URL.
+
+References
+==========
+- `Svelte reference <https://svelte.dev/docs>`_
+- `Svelte guide <https://svelte.dev/tutorial>`_
+- `YouTube API <https://developers.google.com/youtube/v3/getting-started>`_
