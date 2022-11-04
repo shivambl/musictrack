@@ -7,12 +7,24 @@
     function handleAdd(e) {
         const url_payload = e.detail
 
-        const metadata = get_metadata(url_payload)
+        // const metadata = get_metadata(url_payload)
 
-        music_list = [...music_list, {
-            ...metadata,
-            ...url_payload
-        }]
+        const url = url_payload.url
+
+        fetch(
+            '/api/metadata?'
+            + new URLSearchParams({ "url": url }).toString()
+        )
+        .then(response => response.json())
+        .then(response => {
+            console.log("Response", response)
+        })
+        .catch(error => console.error('Error', error))
+
+        // music_list = [...music_list, {
+            // ...metadata,
+            // ...url_payload
+        // }]
     }
 
     let music_list = [

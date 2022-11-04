@@ -1,4 +1,4 @@
-.PHONY: install build dev clean help
+.PHONY: install build vite-dev wrangler-dev clean help
 
 help:
 	@printf "Usage: make <command>\n"
@@ -6,19 +6,22 @@ help:
 	@printf "Commands:\n"
 
 	@printf "\t install \t"
-	@printf "\t Install dependencies using NPM.\n"
+	@printf "Install NPM dependencies.\n"
 
 	@printf "\t build \t\t"
-	@printf "\t Build production website in dist directory.\n"
+	@printf "Build production website in dist/ directory.\n"
 
-	@printf "\t dev \t\t"
-	@printf "\t Start development server.\n"
+	@printf "\t vite-dev \t"
+	@printf "Build website in dist/ directory and watch for changes.\n"
+
+	@printf "\t wrangler-dev \t"
+	@printf "Serve website from dist/ dir, and simulate CF Workers.\n"
 
 	@printf "\t clean \t\t"
-	@printf "\t Cleanup generated files.\n"
+	@printf "Cleanup generated files.\n"
 
 	@printf "\t help \t\t"
-	@printf "\t Display this help message.\n"
+	@printf "Display this help message.\n"
 
 install: node_modules
 
@@ -28,8 +31,11 @@ node_modules:
 build: install
 	npm run build
 
-dev: install
-	npm run dev
+vite-dev: install
+	npm run build-watch
+
+wrangler-dev: install
+	wrangler pages dev ./dist
 
 clean:
 	rm -rf dist node_modules
